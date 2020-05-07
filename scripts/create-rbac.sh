@@ -65,33 +65,12 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: helm-deploy-${service}
----
-# Note - this is not great, since it allows the holder of the role to technically assign themselves
-# more clusterroles, but it's necessary to allow helm charts to create RBAC entries.
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: helm-deploy-${service}
-rules:
-  - apiGroups: ["", "rbac.authorization.k8s.io"]
-    resources: ["clusterroles","clusterrolebindings"]
-    verbs: ["*"]
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: helm-deploy-${service}
-roleRef:
-  kind: ClusterRole
-  apiGroup: rbac.authorization.k8s.io
-  name: helm-deploy-${service}
-subjects:
-  - kind: ServiceAccount
-    name: helm-deploy-${service}
-    namespace: ${service}
+
 EOF
 
-# Create the kubeconfig
+# Now apply any other RBAC required (this can vary on a per-chart basis, depending on how much access the service needs)
+kubectl apply -f rbac/*
 
+# Create the kubeconfig
 echo -e "\n\nHere's the kubeconfig for the service account we just created:\n\n"
 scripts/create-kubeconfig.sh ${service} --namespace ${service}
