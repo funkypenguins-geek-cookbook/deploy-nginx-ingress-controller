@@ -19,23 +19,13 @@ jobs:
     - name: 'Deploy chart'
       uses: 'deliverybot/helm@master'
       with:
-
-        # What to name the release
         release: '${{env.CHART_NAME}}'
-
-        # The namespace into which to deploy the chart
         namespace: '${{env.CHART_NAME}}'
-
-        # Either "helm3" or "helm" (if you've not migrated away from Tiller yet!)
         helm: 'helm3'
-
-        # Name of the helm chart
         chart: '${{env.CHART_NAME}}'
-
-        # Use any helm chart repository here
         repository: '${{env.CHART_REPO}}'
 
-        # Insert your values.yaml overrides here, indented as you would in a regular YAML file
+        # Insert values.yaml overrides here, indented as you would in a regular YAML file
         values: |
         #   image:
         #     repository:   <whatever>/<whatever>:<tag>
