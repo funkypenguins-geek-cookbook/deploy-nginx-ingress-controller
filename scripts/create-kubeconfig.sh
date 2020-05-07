@@ -20,7 +20,7 @@ function _kubectl() {
   kubectl $@ $kubectl_options
 }
 
-serviceaccount="sa-$1"
+serviceaccount="helm-deploy-$1"
 kubectl_options="${@:2}"
 
 if ! secret="$(_kubectl get serviceaccount "$serviceaccount" -o 'jsonpath={.secrets[0].name}' 2>/dev/null)"; then
