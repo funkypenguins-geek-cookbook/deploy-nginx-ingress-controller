@@ -17,16 +17,16 @@ jobs:
       with:
 
         # What to name the release
-        release: 'nginx-ingress-controller'
+        release: '${CHART_NAME}'
 
         # The namespace into which to deploy the chart
-        namespace: 'nginx-ingress-controller'
+        namespace: '${CHART_NAME}'
 
         # Either "helm3" or "helm" (if you've not migrated away from Tiller yet!)
         helm: 'helm3'
 
         # Name of the helm chart
-        chart: 'webhook-receiver'
+        chart: '${CHART_NAME}'
 
         # Use any helm chart repository here
         repository: https://charts.bitnami.com/bitnami
@@ -39,3 +39,4 @@ jobs:
       # Deployment will use the kubeconfig secret you created in the repo
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
+        CHART_NAME: 'nginx-ingress-controller'

@@ -34,9 +34,9 @@ then
   usage "No token specified"
 fi
 
-if [[ ! $service =~ ^[-a-z]{3,20}$ ]]
+if [[ ! $service =~ ^[-a-z]{3,30}$ ]]
 then
-  usage "Username ${service} invalid. Username can only be lower-case letters, 3-12 characters in length"
+  usage "Username ${service} invalid. Username can only be lower-case letters, 3-30 characters in length"
 fi
 
 kubectl -n $service create secret docker-registry $service-pullsecret \

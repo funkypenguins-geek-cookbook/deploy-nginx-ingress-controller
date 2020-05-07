@@ -19,9 +19,9 @@ then
   usage "No service specified"
 fi
 
-if [[ ! $service =~ ^[-a-z]{3,20}$ ]]
+if [[ ! $service =~ ^[-a-z]{3,30}$ ]]
 then
-  usage "Service ${service} invalid. Username can only be lower-case letters, 3-20 characters in length"
+  usage "Service ${service} invalid. Username can only be lower-case letters, 3-30 characters in length"
 fi
 
 echo "Creating namespace and RBAC config for ${service}"
