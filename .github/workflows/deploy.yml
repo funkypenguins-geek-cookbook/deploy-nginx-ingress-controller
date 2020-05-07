@@ -17,10 +17,10 @@ jobs:
       with:
 
         # What to name the release
-        release: 'webhook-receiver'
+        release: 'nginx-ingress-controller'
 
         # The namespace into which to deploy the chart
-        namespace: 'webhook-receiver'
+        namespace: 'nginx-ingress-controller'
 
         # Either "helm3" or "helm" (if you've not migrated away from Tiller yet!)
         helm: 'helm3'
@@ -29,7 +29,7 @@ jobs:
         chart: 'webhook-receiver'
 
         # Use any helm chart repository here
-        repository: https://funkypenguins-geek-cookbook.github.io/helm-webhook-receiver
+        repository: https://charts.bitnami.com/bitnami
 
         # Insert your values.yaml overrides here, indented as you would in a regular YAML file
         values: |
