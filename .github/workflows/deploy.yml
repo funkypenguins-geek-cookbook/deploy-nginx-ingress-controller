@@ -27,8 +27,8 @@ jobs:
 
         # Insert values.yaml overrides here, indented as you would in a regular YAML file
         values: |
-        #   image:
-        #     repository:   <whatever>/<whatever>:<tag>
+          publishService:
+            enabled: true
 
       # Deployment will use the kubeconfig secret you created in the repo
       env:
